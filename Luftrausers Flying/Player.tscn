@@ -8,6 +8,7 @@ extents = Vector2( 32, 32 )
 
 [node name="Player" type="RigidBody2D"]
 gravity_scale = 0.0
+linear_damp = 1.0
 angular_damp = 5.0
 script = ExtResource( 2 )
 forceStrength = 500
