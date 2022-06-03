@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swoosh.wav-ab21e35d00b245819e0bff8d7bc3ee4e.sample"
+
+[deps]
+
+source_file="res://flappy-bird-assets/audio/swoosh.wav"
+dest_files=[ "res://.import/swoosh.wav-ab21e35d00b245819e0bff8d7bc3ee4e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

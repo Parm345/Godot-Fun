@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wing.wav-23f07b14c679552a89b6afd090bb6ea4.sample"
+
+[deps]
+
+source_file="res://flappy-bird-assets/audio/wing.wav"
+dest_files=[ "res://.import/wing.wav-23f07b14c679552a89b6afd090bb6ea4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

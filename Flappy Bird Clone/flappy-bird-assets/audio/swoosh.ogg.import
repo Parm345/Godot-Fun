@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/swoosh.ogg-f043a4c1620166f0f5054d319775aefb.oggstr"
+
+[deps]
+
+source_file="res://flappy-bird-assets/audio/swoosh.ogg"
+dest_files=[ "res://.import/swoosh.ogg-f043a4c1620166f0f5054d319775aefb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
