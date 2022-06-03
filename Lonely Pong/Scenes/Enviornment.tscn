@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.1777, 9.99458 )
+
+[node name="Enviornment" type="Node2D"]
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2( 510, 705 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+scale = Vector2( 32, 1 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Bottom"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -490.0
+margin_top = -10.0
+margin_right = 490.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2( 510, 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+scale = Vector2( 32, 1 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Top"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -490.0
+margin_top = -10.0
+margin_right = 490.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Side" type="StaticBody2D" parent="."]
+position = Vector2( 10, 360 )
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Side"]
+scale = Vector2( 22, 1 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Side"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -355.0
+margin_top = -10.0
+margin_right = 355.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

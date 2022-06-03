@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wing.ogg-a7217bbd587ddb14c33db810dd48d42d.oggstr"
+
+[deps]
+
+source_file="res://flappy-bird-assets-master/audio/wing.ogg"
+dest_files=[ "res://.import/wing.ogg-a7217bbd587ddb14c33db810dd48d42d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

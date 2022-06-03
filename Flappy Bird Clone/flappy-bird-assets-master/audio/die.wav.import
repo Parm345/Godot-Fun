@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/die.wav-c007cd60fa23772e1807b00575f0f102.sample"
+
+[deps]
+
+source_file="res://flappy-bird-assets-master/audio/die.wav"
+dest_files=[ "res://.import/die.wav-c007cd60fa23772e1807b00575f0f102.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

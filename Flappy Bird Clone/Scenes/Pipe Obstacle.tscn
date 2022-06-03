@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Pipe Obstacle.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Green Pipe.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Red Pipe.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Pipe Obstacle" type="Node2D" groups=["Obstacle"]]
+script = ExtResource( 1 )
+greenPipe = ExtResource( 2 )
+redPipe = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 2, 2 )
+shape = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, 250 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

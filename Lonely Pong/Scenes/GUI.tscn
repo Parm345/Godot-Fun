@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/GUI.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventAction" id=2]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 44
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 70
+font_data = ExtResource( 1 )
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="StartButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -93.568
+margin_top = -143.384
+margin_right = 95.432
+margin_bottom = -78.3844
+custom_fonts/font = SubResource( 1 )
+shortcut = SubResource( 3 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 44.8924
+margin_right = 20.0
+margin_bottom = 58.8924
+custom_fonts/font = SubResource( 4 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.993
+margin_top = -44.4783
+margin_right = 248.007
+margin_bottom = 40.5217
+custom_fonts/font = SubResource( 5 )
+text = "Lonely Pong!"
+
+[node name="GameOver" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="timeout" from="GameOver" to="." method="_on_GameOver_timeout"]

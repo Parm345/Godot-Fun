@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://flappy-bird-assets-master/sprites/background-night.png" type="Texture" id=2]
+[ext_resource path="res://flappy-bird-assets-master/sprites/background-day.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Bird.tscn" type="PackedScene" id=4]
+[ext_resource path="res://flappy-bird-assets-master/sprites/base.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Pipe Obstacle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://flappy-bird-assets-master/audio/die.wav" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+pipeObstacle = ExtResource( 7 )
+bgDay = ExtResource( 3 )
+bgNight = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+light_mask = 5
+scale = Vector2( 2, 2 )
+
+[node name="BaseBarrier" type="StaticBody2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseBarrier"]
+position = Vector2( 144, 412 )
+scale = Vector2( 10, 1 )
+shape = SubResource( 1 )
+
+[node name="Base" type="Sprite" parent="BaseBarrier"]
+position = Vector2( 144, 457 )
+texture = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 143.338, 100.109 )
+
+[node name="Spawn Location" type="Position2D" parent="."]
+position = Vector2( 370, 233 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 249, 232 )
+scale = Vector2( 1, 27.988 )
+shape = SubResource( 2 )
+
+[node name="Difficulty Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Fall Sound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 144, 256 )
+stream = ExtResource( 8 )
+volume_db = 6.0
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+
+[connection signal="gameLost" from="Player" to="." method="_on_Player_gameLost"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="timeout" from="Difficulty Timer" to="." method="_on_Difficulty_Timer_timeout"]
+[connection signal="startGame" from="HUD" to="." method="_on_HUD_startGame"]
