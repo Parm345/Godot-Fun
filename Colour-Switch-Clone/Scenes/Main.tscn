@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Circles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ColourSwitcher.tscn" type="PackedScene" id=4]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+colour_circle = ExtResource( 3 )
+switch_circle = ExtResource( 4 )
+
+[node name="Circles" parent="." instance=ExtResource( 3 )]
+position = Vector2( 240, 200 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, 360 )
+
+[node name="ObjectSpawnLocation" type="Position2D" parent="."]
+position = Vector2( 240, -250 )
