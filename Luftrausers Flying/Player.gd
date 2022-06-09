@@ -11,9 +11,17 @@ export (int) var momentStrength = 5000
 var screenSize
 var thrust = Vector2()
 var rotationDir = 0
+
+func test(arr):
+	arr.clear()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screenSize = get_viewport().get_visible_rect().size
+	var a = [1, 2, 3]
+	print(a)
+	test(a)
+	print(a)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
