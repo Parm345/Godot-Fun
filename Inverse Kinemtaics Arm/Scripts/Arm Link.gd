@@ -8,7 +8,7 @@ var armLength:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(tan(0))
+#	print(tan(0))
 	armLength = $"Pointer End".position.length()
 #	print(armLength)
 
