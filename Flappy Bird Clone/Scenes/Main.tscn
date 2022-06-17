@@ -55,7 +55,6 @@ autostart = true
 [node name="Fall Sound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 144, 256 )
 stream = ExtResource( 8 )
-volume_db = 6.0
 
 [node name="HUD" parent="." instance=ExtResource( 6 )]
 
