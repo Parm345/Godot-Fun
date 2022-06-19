@@ -50,6 +50,7 @@ func _on_Player_gameLost(body):
 	for child in childArray:
 		if child.has_method("setSpeed"):
 			child.setSpeed(0)
+			worldSpeed = 0
 	$HUD/StartButton.show()
 
 

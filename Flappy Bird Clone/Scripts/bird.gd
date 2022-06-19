@@ -35,7 +35,7 @@ func _process(delta):
 	
 	var collisionInfo = move_and_collide(velocity)
 	#print(collisionInfo)
-	if collisionInfo != null:
+	if collisionInfo != null and birdIsAlive:
 		emit_signal("gameLost", collisionInfo.get_collider())
 		$"Collision Audio".play()
 		birdIsAlive = false
