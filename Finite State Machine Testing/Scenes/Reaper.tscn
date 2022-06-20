@@ -3,6 +3,10 @@
 [ext_resource path="res://Assets/Reaper Idle.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Reaper Attack.png" type="Texture" id=2]
 
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 7.0
+height = 6.0
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 20, 20 )
@@ -48,18 +52,14 @@ animations = [ {
 "speed": 9.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 7.0
-height = 6.0
-
 [node name="Reaper" type="KinematicBody2D"]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
-animation = "Attack"
-frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 0 )
 shape = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "idle"
+frame = 4
+playing = true
