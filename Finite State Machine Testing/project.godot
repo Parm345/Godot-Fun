@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "FSMController",
+"language": "GDScript",
+"path": "res://Scripts/Finite State Machine Controller.gd"
+} ]
+_global_script_class_icons={
+"FSMController": ""
+}
+
 [application]
 
 config/name="Finite State Machine Testing"

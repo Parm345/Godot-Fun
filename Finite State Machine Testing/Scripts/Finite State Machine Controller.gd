@@ -1,17 +1,40 @@
 extends Node
-
+class_name FSMController 
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+onready var parent = get_parent()
+var states = {}
+var curState = null setget setState
+var prevState = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+func setState(newState):
+	prevState = curState
+	curState = newState
+	
+	if newState != null:
+		swapState(curState, prevState) # goes into the new state
+
+func addState(newState, stateFunction):
+	states[newState] = stateFunction
+
+# use to control logic when transitioning between states (useful for animation)
+func swapState(newState, oldState):
+	pass
+
+# controls when a state is changed 
+func controlStates():
+	#get_parent().call(curState)z	
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	
+	if curState != null:
+		controlStates()
