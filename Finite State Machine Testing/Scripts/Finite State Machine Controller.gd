@@ -28,13 +28,16 @@ func addState(newState, stateFunction):
 func swapState(newState, oldState):
 	pass
 
-# controls when a state is changed 
-func controlStates():
-	#get_parent().call(curState)z	
-	pass
+# returns the state to change too
+func controlStates(delta):
+	return null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
 	if curState != null:
-		controlStates()
+		get_parent().call(curState) #  runs the state code as long as the state isn't null
+	
+	var newState = controlStates(delta)
+	if newState != null:
+		setState(newState)
