@@ -36,7 +36,8 @@ func controlStates(delta):
 func _process(delta):
 	
 	if curState != null:
-		get_parent().call(curState) #  runs the state code as long as the state isn't null
+		print(curState)
+		parent.call(curState) #  runs the state code as long as the state isn't null
 	
 	var newState = controlStates(delta)
 	if newState != null:
