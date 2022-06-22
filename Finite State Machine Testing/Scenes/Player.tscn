@@ -62,7 +62,7 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "idle"
-frame = 7
+frame = 6
 playing = true
 
 [node name="FSM Controller" type="Node2D" parent="."]

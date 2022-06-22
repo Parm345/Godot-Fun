@@ -8,6 +8,9 @@ export var health = 100
 export var speed = 10
 
 var isAttacking = false
+var isRunning = false
+var isJumping = false
+var isIdling = true
 
 var velocity = Vector2()
 var collision:KinematicCollision2D setget ,getCollision 
@@ -15,7 +18,7 @@ var collision:KinematicCollision2D setget ,getCollision
 const MAX_SPEED = 10
 const GRAVITY = -5
 const HORZ_ACC = 2
-const JUMP_FORCE = 5
+const JUMP_FORCE = 20
 const SLOW_FALL	 = 1
 const MAX_FALL = 25
 
@@ -35,10 +38,13 @@ func getCollision():
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= HORZ_ACC
+		isRunning = true
 		$AnimatedSprite.flip_h = true
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += HORZ_ACC
 		$AnimatedSprite.flip_h = false
+		isRunning = true
+		
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	
 	collision = move_and_collide(velocity)

@@ -10,12 +10,24 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "FSM",
+"language": "GDScript",
+"path": "res://Scripts/Improved FSM.gd"
+}, {
+"base": "Node",
 "class": "FSMController",
 "language": "GDScript",
 "path": "res://Scripts/Finite State Machine Controller.gd"
+}, {
+"base": "Node",
+"class": "stateObject",
+"language": "GDScript",
+"path": "res://Scripts/state object.gd"
 } ]
 _global_script_class_icons={
-"FSMController": ""
+"FSM": "",
+"FSMController": "",
+"stateObject": ""
 }
 
 [application]
