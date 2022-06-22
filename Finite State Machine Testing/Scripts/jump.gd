@@ -1,7 +1,7 @@
 extends stateObject
 
 var jumpForce 
-var velocity: Vector2
+var velocity: Vector2 
 
 # Called when the parent enters the state
 func enter(scriptParent):
@@ -15,4 +15,4 @@ func inPhysicsProcess(delta):
 	var collisionInfo = parent.move_and_collide(velocity)
 
 func changeParentState():
-	return parent.states.slowFall
+	return states.fall

@@ -4,7 +4,8 @@ class_name stateObject
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var parent
+onready var states = get_parent().states
+onready var parent = get_parent().get_parent()
 
 # Called when the parent enters the state
 func enter(scriptParent):

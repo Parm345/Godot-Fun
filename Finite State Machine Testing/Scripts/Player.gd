@@ -16,11 +16,11 @@ var velocity = Vector2()
 var collision:KinematicCollision2D setget ,getCollision 
 
 const MAX_SPEED = 10
-const GRAVITY = -5
+const GRAVITY = 5
 const HORZ_ACC = 2
-const JUMP_FORCE = 20
+const JUMP_FORCE = 50
 const SLOW_FALL	 = 1
-const MAX_FALL = 25
+const MAX_FALL = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

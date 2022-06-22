@@ -41,9 +41,10 @@ tile_data = PoolIntArray( 65536, 0, 0, 65557, 0, 0, 131072, 0, 0, 131093, 0, 0, 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 43, 148 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-zoom = Vector2( 0.3, 0.3 )
-
 [node name="Reaper" parent="." instance=ExtResource( 3 )]
 position = Vector2( 236, 145 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 43, 148 )
+current = true
+zoom = Vector2( 0.3, 0.3 )

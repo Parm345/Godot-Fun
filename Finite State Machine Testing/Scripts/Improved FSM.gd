@@ -9,17 +9,29 @@ var prevState = null
 func _ready():
 	for child in get_children():
 		states[child.name] = child
+	setState(states.fall)
 
 func setState(newState):
+	print(newState)
+	
 	prevState = curState
 	curState = newState
+	
+	if prevState != null:
+		prevState.exit()
 	curState.enter(parent)
 
-func handleInput(event):
-	pass
-
 func _physics_process(delta):
-	curState.inPhysicsProcess()
-	var newState = curState.changeParentState()
-	if newState != null:
-		setState(newState)
+	if curState != null:
+		curState.inPhysicsProcess(delta)
+		var newState = curState.changeParentState()
+		if newState != null:
+			setState(newState)
+
+func _process(delta):
+	if curState != null:
+		curState.inProcess(delta)
+
+func _input(event):
+	if curState != null:
+		curState.handleInput(event)
