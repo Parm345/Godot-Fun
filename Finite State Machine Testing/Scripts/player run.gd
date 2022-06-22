@@ -19,7 +19,12 @@ func changeParentState():
 	if isIdling:
 		isIdling = false
 		return states.idle
+	if !parent.isOnGround():
+		return states.fall
 	return null
+
+func inPhysicsProcess(delta):
+	pass
 
 func handleInput(event):
 	if event.is_action_pressed("ui_up"):

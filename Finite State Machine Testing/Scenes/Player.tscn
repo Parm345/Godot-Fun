@@ -10,10 +10,6 @@
 [ext_resource path="res://Scripts/player run.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/idle.gd" type="Script" id=9]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 6.0
-height = 6.0
-
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 29, 26 )
@@ -56,12 +52,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="KinematicBody2D"]
-script = ExtResource( 4 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 8.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -4, 3 )
-shape = SubResource( 1 )
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 4, -2 )
+script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
@@ -84,3 +81,10 @@ script = ExtResource( 6 )
 
 [node name="fall" type="Node2D" parent="FSM Controller"]
 script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4, 2 )
+shape = SubResource( 1 )
+
+[node name="Bottom" type="Position2D" parent="."]
+position = Vector2( -4, 11 )

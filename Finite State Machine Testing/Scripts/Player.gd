@@ -13,11 +13,11 @@ var isJumping = false
 var isIdling = true
 
 var velocity = Vector2()
-var collision:KinematicCollision2D setget ,getCollision 
+var collision:KinematicCollision2D setget , getCollision
 
-const MAX_SPEED = 10
+const MAX_SPEED = 1
 const GRAVITY = 5
-const HORZ_ACC = 2
+const HORZ_ACC = 1
 const JUMP_FORCE = 50
 const SLOW_FALL	 = 1
 const MAX_FALL = 1
@@ -36,14 +36,17 @@ func getCollision():
 	return collision
 
 func _physics_process(delta):
-	if Input.is_action_pressed("ui_left"):
-		velocity.x -= HORZ_ACC
-		isRunning = true
-		$AnimatedSprite.flip_h = true
-	if Input.is_action_pressed("ui_right"):
-		velocity.x += HORZ_ACC
-		$AnimatedSprite.flip_h = false
-		isRunning = true
+	if isOnGround():
+		if Input.is_action_pressed("ui_left"):
+			velocity.x -= HORZ_ACC
+			isRunning = true
+			$AnimatedSprite.flip_h = true
+		if Input.is_action_pressed("ui_right"):
+			velocity.x += HORZ_ACC
+			$AnimatedSprite.flip_h = false
+			isRunning = true
+	if Input.is_action_just_released("ui_right") or Input.is_action_just_released("ui_left"):
+		velocity.x = 0
 		
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	
@@ -76,4 +79,5 @@ func isOnGround():
 	if collision == null:
 #		print("yo")
 		return false
-	return collision.position.y > position.y
+#	print(collision.position, " ", position, " ", $Position2D.global_position)
+	return int(collision.position.y) == int($Bottom.global_position.y)
