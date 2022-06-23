@@ -26,7 +26,7 @@ func enter(scriptParent):
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame. Run in FSM _physics_process.
 func inPhysicsProcess(delta):
-	parent.velocity.y += gravity
+	parent.velocity.y += gravity*delta
 	parent.velocity.y = clamp(parent.velocity.y, 0, maxFall)
 	collisionInfo = parent.getCollision()
 	if collisionInfo == null:
@@ -36,17 +36,17 @@ func inPhysicsProcess(delta):
 		parent.velocity.x = 0
 		if collisionInfo.get_normal() == LEFT:
 			allowRight = false
-			print("no")
+#			print("no")
 		elif collisionInfo.get_normal() == RIGHT:
 			allowLeft = false
-			print("no 2")
+#			print("no 2")
 	
 	if Input.is_action_pressed("ui_left") && allowLeft:
 			parent.velocity.x -= parent.HORZ_ACC
-			parent.get_node("AnimatedSprite").flip_h = true
+			parent.flipSprite(true)
 	if Input.is_action_pressed("ui_right") && allowRight:
 			parent.velocity.x += parent.HORZ_ACC
-			parent.get_node("AnimatedSprite").flip_h = false
+			parent.flipSprite(false)
 #	parent.setCollision(collisionInfo)
 
 func changeParentState():

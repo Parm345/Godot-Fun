@@ -52,9 +52,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 5.0
-height = 8.0
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 3.5, 8.5 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 4, -2 )
@@ -63,7 +62,7 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "idle"
-frame = 5
+frame = 1
 playing = true
 
 [node name="FSM Controller" type="Node2D" parent="."]
@@ -83,8 +82,8 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -4, 2 )
-shape = SubResource( 1 )
+position = Vector2( -4.5, 2.5 )
+shape = SubResource( 9 )
 
 [node name="Bottom" type="Position2D" parent="."]
 position = Vector2( -4, 11 )

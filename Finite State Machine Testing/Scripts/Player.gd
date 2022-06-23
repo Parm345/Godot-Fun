@@ -8,7 +8,6 @@ export var health = 100
 export var speed = 10
 
 var isAttacking = false
-var isRunning = false
 var isJumping = false
 var isIdling = true
 
@@ -21,9 +20,9 @@ const UP = Vector2(0, -1)
 const MAX_SPEED = 1
 const GRAVITY = 5
 const HORZ_ACC = 1
-const JUMP_FORCE = 50
+const JUMP_FORCE = 20
 const SLOW_FALL	 = 1
-const MAX_FALL = 1
+const MAX_FALL = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,18 +41,23 @@ func _physics_process(delta):
 	if isOnGround():
 		if Input.is_action_pressed("ui_left"):
 			velocity.x -= HORZ_ACC
-			isRunning = true
-			$AnimatedSprite.flip_h = true
+			flipSprite(true)
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += HORZ_ACC
-			$AnimatedSprite.flip_h = false
-			isRunning = true
+			flipSprite(false)
 	if Input.is_action_just_released("ui_right") or Input.is_action_just_released("ui_left"):
 		velocity.x = 0
 		
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	
 	collision = move_and_collide(velocity)
+
+func flipSprite(flipped):
+	$AnimatedSprite.flip_h = flipped
+	if $AnimatedSprite.flip_h == false:
+		$AnimatedSprite.position = Vector2(0, 0)
+	if $AnimatedSprite.flip_h == true:
+		$AnimatedSprite.position = Vector2(-7.5, 0)	
 
 func attack():
 	$AnimatedSprite.set_animation("Attack")
@@ -83,6 +87,7 @@ func isOnGround():
 		return false
 		
 	if $"FSM Controller".curState == $"FSM Controller/fall":
-		return collision.get_normal() != -UP and (collision.normal != RIGHT and collision.normal != LEFT)
+		var isNotCollidingOnSide = collision.normal != RIGHT and collision.normal != LEFT
+		return collision.get_normal() != -UP and isNotCollidingOnSide
 	
 	return collision.get_normal() != -UP
