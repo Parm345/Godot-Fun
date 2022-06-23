@@ -4,6 +4,9 @@ extends stateObject
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+const LEFT = Vector2(-1, 0)
+const RIGHT = Vector2(1, 0)
+
 var gravity
 var maxFall
 var collisionInfo: KinematicCollision2D
@@ -31,10 +34,12 @@ func inPhysicsProcess(delta):
 		allowRight = true
 	else:
 		parent.velocity.x = 0
-		if collisionInfo.position.x > parent.position.x:
+		if collisionInfo.get_normal() == LEFT:
 			allowRight = false
-		elif collisionInfo.position.x < parent.position.y:
+			print("no")
+		elif collisionInfo.get_normal() == RIGHT:
 			allowLeft = false
+			print("no 2")
 	
 	if Input.is_action_pressed("ui_left") && allowLeft:
 			parent.velocity.x -= parent.HORZ_ACC

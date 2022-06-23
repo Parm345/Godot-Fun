@@ -63,7 +63,7 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "idle"
-frame = 6
+frame = 5
 playing = true
 
 [node name="FSM Controller" type="Node2D" parent="."]

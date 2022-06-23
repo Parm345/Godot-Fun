@@ -15,6 +15,9 @@ var isIdling = true
 var velocity = Vector2()
 var collision:KinematicCollision2D setget , getCollision
 
+const LEFT = Vector2(-1, 0)
+const RIGHT = Vector2(1, 0)
+const UP = Vector2(0, -1)
 const MAX_SPEED = 1
 const GRAVITY = 5
 const HORZ_ACC = 1
@@ -77,7 +80,9 @@ func run():
 
 func isOnGround():
 	if collision == null:
-#		print("yo")
 		return false
-#	print(collision.position, " ", position, " ", $Position2D.global_position)
-	return int(collision.position.y) == int($Bottom.global_position.y)
+		
+	if $"FSM Controller".curState == $"FSM Controller/fall":
+		return collision.get_normal() != -UP and (collision.normal != RIGHT and collision.normal != LEFT)
+	
+	return collision.get_normal() != -UP
