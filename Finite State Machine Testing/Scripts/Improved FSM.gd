@@ -12,7 +12,7 @@ func _ready():
 	setState(states.fall)
 
 func setState(newState):
-	print(newState)
+#	print(newState)
 	
 	prevState = curState
 	curState = newState

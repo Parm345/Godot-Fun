@@ -51,7 +51,7 @@ func inPhysicsProcess(delta):
 
 func changeParentState():
 	if parent.isOnGround():
-		print("is on ground")
+#		print("is on ground")
 		return states.idle
 	return null
 
