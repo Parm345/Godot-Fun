@@ -9,7 +9,10 @@ var prevState = null
 func _ready():
 	for child in get_children():
 		states[child.name] = child
-	setState(states.fall)
+	inReady()
+
+func inReady():
+	pass
 
 func setState(newState):
 #	print(newState)

@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "FSMController",
 "language": "GDScript",
-"path": "res://Scripts/Finite State Machine Controller.gd"
+"path": "res://Scripts/Old FSM Stuff/Finite State Machine Controller.gd"
 }, {
 "base": "Node",
 "class": "stateObject",
