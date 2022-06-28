@@ -92,3 +92,6 @@ func _on_Attack_Area_body_entered(body):
 func _on_Attack_Area_body_exited(body):
 	if body in enemiesInRange:
 		enemiesInRange.remove(body)
+
+func hurt():
+	pass

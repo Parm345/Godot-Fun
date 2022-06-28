@@ -15,8 +15,6 @@ func inReady():
 	pass
 
 func setState(newState):
-#	print(newState)
-	
 	prevState = curState
 	curState = newState
 	

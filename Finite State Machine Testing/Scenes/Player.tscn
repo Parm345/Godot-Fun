@@ -18,16 +18,16 @@ region = Rect2( 0, 0, 29, 26 )
 atlas = ExtResource( 1 )
 region = Rect2( 29, 0, 29, 26 )
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
-region = Rect2( 29, 0, 29, 26 )
-
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 29, 26 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
+region = Rect2( 29, 0, 29, 26 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
 region = Rect2( 29, 0, 29, 26 )
 
 [sub_resource type="SpriteFrames" id=4]
@@ -37,14 +37,14 @@ animations = [ {
 "name": "idle",
 "speed": 7.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 6 ) ],
 "loop": true,
 "name": "Run",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Attack",
 "speed": 5.0
 } ]
 
@@ -61,6 +61,7 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "Attack"
+frame = 3
 playing = true
 flip_h = true
 
@@ -89,6 +90,7 @@ position = Vector2( -4, 11 )
 
 [node name="Attack Area" type="Area2D" parent="."]
 position = Vector2( -7, 2 )
+monitorable = false
 __meta__ = {
 "_edit_group_": true
 }

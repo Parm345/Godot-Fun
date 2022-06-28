@@ -43,7 +43,7 @@ position = Vector2( 60, 146 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.4, 0.4 )
 
 [node name="Reaper" parent="." instance=ExtResource( 3 )]
 position = Vector2( 236, 145 )

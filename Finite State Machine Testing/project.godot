@@ -45,6 +45,7 @@ window/stretch/aspect="keep"
 
 "anti aliasing"=false
 rendering=false
+editor=false
 
 [physics]
 
