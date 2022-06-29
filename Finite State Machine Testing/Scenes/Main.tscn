@@ -46,4 +46,4 @@ current = true
 zoom = Vector2( 0.4, 0.4 )
 
 [node name="Reaper" parent="." instance=ExtResource( 3 )]
-position = Vector2( 236, 145 )
+position = Vector2( 265, 134 )

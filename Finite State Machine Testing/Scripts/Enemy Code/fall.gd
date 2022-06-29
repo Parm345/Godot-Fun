@@ -24,10 +24,10 @@ func enter(scriptParent):
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame. Run in FSM _physics_process.
 func inPhysicsProcess(delta):
-	parent.velocity.y += gravity*delta
-	parent.velocity.y = clamp(parent.velocity.y, 0, maxFall)
+	#parent.velocity.y += gravity*delta
+	#parent.velocity.y = clamp(parent.velocity.y, 0, maxFall)
 #	print(parent.velocity)
-
+	pass
 func changeParentState():
 	if parent.is_on_floor():
 		return states.idle

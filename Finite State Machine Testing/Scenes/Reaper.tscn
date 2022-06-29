@@ -62,6 +62,9 @@ animations = [ {
 extents = Vector2( 4.25, 3.5 )
 
 [node name="Reaper" type="KinematicBody2D"]
+position = Vector2( 1, -1 )
+scale = Vector2( 0.85, 0.85 )
+collision/safe_margin = 0.001
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

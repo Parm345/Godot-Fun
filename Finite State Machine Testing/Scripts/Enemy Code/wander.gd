@@ -3,6 +3,7 @@ extends stateObject
 const LEFT = Vector2(-1, 0)
 const RIGHT = Vector2(1, 0)
 
+var sandWiched #
 var acc
 var maxSpeed
 var jump = false
@@ -45,8 +46,8 @@ func inProcess(delta):
 	pass
 
 func changeParentState():
-	if parent.is_on_floor(): # use ray cast to determine if object should fall instead of is_on_floor()
-		print("yay")
+	if !parent.is_on_floor(): 
+		return states.fall
 	if parent.canAttackPlayer:
 		return states.attack
 	if jump:
