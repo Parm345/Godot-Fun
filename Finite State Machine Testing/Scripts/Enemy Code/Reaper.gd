@@ -7,15 +7,36 @@ const UP = Vector2(0, -1)
 const MAX_SPEED = 10
 const GRAVITY = 200
 const HORZ_ACC = 1
-const JUMP_FORCE = 325
+const JUMP_FORCE = 3000
+const SLOW_FALL = 50
 const MAX_FALL = 1000
 
-var bodiesInAttackRange = []
-var collision: KinematicCollision2D setget , getCollision
 var velocity: Vector2 = Vector2()
-var isFlipped = false setget setFlipped
+var bodiesInAttackRange = []
 var canAttackPlayer = false
 var firstFlip = true
+
+var jumpTargetPos: Vector2 = Vector2() setget setJumpTargetPos, getJumpTargetPos
+var collision: KinematicCollision2D setget , getCollision
+var isFlipped = false setget setFlipped
+
+# Setters and Getters
+
+func getJumpTargetPos():
+	return jumpTargetPos
+
+func setJumpTargetPos(target: Vector2):
+	jumpTargetPos = target
+
+func getCollision():
+	return collision
+
+# does not work properly if _isFlipped == false in _ready
+func setFlipped(_isFlipped: bool):
+	isFlipped = _isFlipped
+	scale.x = -scale.x
+
+# Generic Functions
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,14 +50,8 @@ func _process(delta):
 func _physics_process(delta):
 	velocity = move_and_slide(velocity, UP)
 	collision = get_last_slide_collision()
-	
-func getCollision():
-	return collision
 
-# does not work properly if _isFlipped == false in _ready
-func setFlipped(_isFlipped):
-	isFlipped = _isFlipped
-	scale.x = -scale.x
+# Signal Control
 
 func _on_Attack_Area_body_entered(body):
 	if body.has_method("hurt"):

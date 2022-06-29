@@ -5,6 +5,7 @@ const RIGHT = Vector2(1, 0)
 
 var acc
 var maxSpeed
+var jump = false
 
 # Called when the parent enters the state
 func enter(scriptParent):
@@ -34,7 +35,9 @@ func inPhysicsProcess(delta):
 	if collisionInfo != null:
 		if collisionInfo.normal == RIGHT:
 			parent.setFlipped(true)
+			jump = true
 		elif collisionInfo.normal == LEFT:
+			jump = true
 			parent.setFlipped(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame. Run in FSM _process.
@@ -42,7 +45,12 @@ func inProcess(delta):
 	pass
 
 func changeParentState():
+	if parent.is_on_floor(): # use ray cast to determine if object should fall instead of is_on_floor()
+		print("yay")
 	if parent.canAttackPlayer:
 		return states.attack
+	if jump:
+		jump = false
+		return states.jump
 	return null
 
