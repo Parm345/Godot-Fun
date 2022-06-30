@@ -11,9 +11,14 @@ func enter(scriptParent):
 	slowFall = parent.SLOW_FALL
 	jumpForce = -parent.JUMP_FORCE
 	jumpTo = parent.getJumpTargetPos()
+
 	
 func inPhysicsProcess(delta):
 #	var collisionInfo = parent.move_and_collide(velocity)
+	if parent.isFlipped:
+		parent.velocity.x = parent.MAX_SPEED
+	else:
+		parent.velocity.x = -parent.MAX_SPEED
 	parent.velocity.y = jumpForce * delta
 	jumpForce += slowFall
 

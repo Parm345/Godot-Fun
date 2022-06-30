@@ -20,7 +20,10 @@ func enter(scriptParent):
 	parent = scriptParent 
 	gravity = parent.GRAVITY
 	maxFall = parent.MAX_FALL
-#	parent.velocity.x = 50
+	if parent.isFlipped:
+		parent.velocity.x = parent.MAX_SPEED
+	else:
+		parent.velocity.x = -parent.MAX_SPEED
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame. Run in FSM _physics_process.
 func inPhysicsProcess(delta):

@@ -12,4 +12,6 @@ func enter(scriptParent):
 	parent.velocity = Vector2(0,0)
 
 func changeParentState():
+	if parent.canAttackPlayer:
+		return states.attack
 	return states.wander

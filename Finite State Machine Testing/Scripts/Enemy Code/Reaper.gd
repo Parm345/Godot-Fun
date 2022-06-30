@@ -16,16 +16,15 @@ var bodiesInAttackRange = []
 var canAttackPlayer = false
 var firstFlip = true
 
-var groundLevel setget setGroundLevel
+var lastSeenPlayerPos: Vector2 = Vector2() setget , getLastSeenPlayerPos
 var jumpTargetPos: Vector2 = Vector2() setget setJumpTargetPos, getJumpTargetPos
 var collision: KinematicCollision2D setget , getCollision
 var isFlipped = false setget setFlipped
 
 # Setters and Getters
 
-func setGroundLevel(setNewGroundLevel: bool = true):
-	if setNewGroundLevel:
-		groundLevel = $"Ground Pointer".get_collision_point().y
+func getLastSeenPlayerPos():
+	return lastSeenPlayerPos
 
 func getJumpTargetPos():
 	return jumpTargetPos
@@ -41,7 +40,7 @@ func setFlipped(_isFlipped: bool):
 	isFlipped = _isFlipped
 	scale.x = -scale.x
 
-# Generic Functions
+# Flow Functions
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,27 +48,38 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+#	print(position, " ", lastSeenPlayerPos)
 	pass
 
 func _physics_process(delta):
 	velocity.y += GRAVITY * delta # apply gravity
 	velocity = move_and_slide(velocity, UP)
 	collision = get_last_slide_collision()
-#	print($FSM.curState)
-#	for i in get_slide_count():
-#		var collision = get_slide_collision(i)
-#		print("Collided with: ", collision.collider.name)
 
-#	print(collision)
-	#print(is_on_floor(), is_on_ceiling())
-# Condition Checkers
+	
+# Condition Checkers/Control
 
-func playerOnTop():
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		if collision.collider.name == "Player" and collision.normal == UP:
+func canJump():
+	if $"Jump Sightline".is_colliding():
+		return false
+	return true
+
+func changeColour(newColour: Color):
+	set_modulate(newColour)
+
+func playerSeen():
+	if $"Player Sightline".is_colliding():
+		if $"Player Sightline".get_collider().name == "Player":
+			lastSeenPlayerPos = $"Player Sightline".get_collision_point()
+#			print(lastSeenPlayerPos, get_parent().get_node("Player").global_position, position)
 			return true
 	return false
+
+func playerSeenAt():
+	return $"Player Sightline".get_collision_point()
+
+func flip():
+	setFlipped(!isFlipped)
 
 # Signal Control
 

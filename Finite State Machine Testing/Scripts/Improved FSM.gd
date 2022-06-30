@@ -21,8 +21,8 @@ func setState(newState):
 	if prevState != null:
 		prevState.exit()
 	curState.enter(parent)
-	if parent.name == "Reaper":
-		print(curState)
+#	if parent.name == "Reaper":
+#		print(curState)
 
 func _physics_process(delta):
 	if curState != null:
